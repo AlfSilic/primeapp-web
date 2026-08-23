@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>PrimeApp Web – Impresión de capturas</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script>
+    (function () {
+      var t = localStorage.getItem("primeapp_theme");
+      if (!t) {
+        t = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+      }
+      document.documentElement.setAttribute("data-theme", t);
+    })();
+  </script>
+</head>
+<body>
+  <div class="app" id="app">
+    <header class="header">
+      <div>
+        <h1>PrimeApp Web</h1>
+        <p class="subtitle">Sube capturas, organízalas e imprime o descarga el PDF</p>
+      </div>
+      <div class="header-actions">
+        <button type="button" class="btn-theme" id="btnTheme" title="Cambiar tema claro/oscuro" aria-label="Cambiar tema">
+          <span id="themeIcon">🌙</span>
+        </button>
+        <span id="imgCount" class="badge">0 imágenes</span>
+        <span id="pageCount" class="badge">0 páginas</span>
+      </div>
+    </header>
+
+    <section class="controls card">
+      <div class="control">
+        <label for="paperSize">Tamaño de hoja</label>
+        <select id="paperSize">
+          <option value="letter">Carta (Letter)</option>
+          <option value="legal">Oficio (Legal)</option>
+          <option value="a4">A4</option>
+        </select>
+      </div>
+      <div class="control">
+        <label for="perPage">Imágenes por hoja</label>
+        <select id="perPage">
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="4" selected>4</option>
+          <option value="6">6</option>
+        </select>
+      </div>
+      <div class="control">
+        <label for="margins">Márgenes</label>
+        <select id="margins">
+          <option value="12">Pequeños</option>
+          <option value="20" selected>Normales</option>
+          <option value="32">Amplios</option>
+        </select>
+      </div>
+      <div class="control control-check">
+        <label>
+          <input type="checkbox" id="showBorders" checked />
+          Bordes en celdas
+        </label>
+      </div>
+    </section>
+
+    <section class="dropzone card" id="dropzone">
+      <input type="file" id="fileInput" accept="image/*" multiple hidden />
+      <div class="dropzone-inner">
+        <p class="drop-title">Arrastra imágenes aquí</p>
+        <p class="drop-hint">o</p>
+        <button type="button" class="btn btn-primary" id="btnBrowse">Seleccionar archivos</button>
+        <p class="drop-formats">JPG, PNG, WebP…</p>
+      </div>
+    </section>
+
+    <section class="toolbar" id="toolbar" hidden>
+      <button type="button" class="btn" id="btnClear">Limpiar todo</button>
+      <button type="button" class="btn btn-secondary" id="btnPreview">Vista previa</button>
+      <button type="button" class="btn btn-primary" id="btnPrint">Imprimir</button>
+      <button type="button" class="btn btn-accent" id="btnPdf">Descargar PDF</button>
+    </section>
+
+    <section class="thumbs card" id="thumbsSection" hidden>
+      <h2>Imágenes <small>(arrastra para reordenar)</small></h2>
+      <div class="thumbs-grid" id="thumbs"></div>
+    </section>
+
+    <section class="preview-section card" id="previewSection" hidden>
+      <div class="preview-header">
+        <h2>Vista previa</h2>
+        <div class="preview-nav">
+          <button type="button" class="btn btn-sm" id="btnPrevPage">← Anterior</button>
+          <span id="previewPageLabel">Página 1</span>
+          <button type="button" class="btn btn-sm" id="btnNextPage">Siguiente →</button>
+        </div>
+      </div>
+      <div class="preview-frame" id="previewFrame"></div>
+    </section>
+  </div>
+
+  <!-- Área solo para impresión (oculta en pantalla) -->
+  <div id="printRoot" class="print-root" aria-hidden="true"></div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
