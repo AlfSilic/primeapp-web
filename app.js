@@ -273,6 +273,16 @@
     );
 
     Promise.all(wait).then(() => {
+      // Evitar título largo en encabezado del navegador
+      const prevTitle = document.title;
+      document.title = " ";
+      const restore = () => {
+        document.title = prevTitle;
+        window.removeEventListener("afterprint", restore);
+      };
+      window.addEventListener("afterprint", restore);
+      // Por si afterprint no dispara en algunos navegadores
+      setTimeout(restore, 60000);
       window.print();
     });
   }
