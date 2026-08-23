@@ -172,14 +172,18 @@
     sheet.className = forPrint ? "print-page" : "sheet-preview";
 
     if (forPrint) {
-      // Usamos tamaño de página CSS; el navegador aplica el papel elegido en el diálogo de impresión
+      // Una hoja exacta: grid con minmax(0,1fr) para que las 4 (o N) imágenes quepan sin desbordar
+      const printMargin = Math.min(margin, 16);
+      const printGap = 6;
       sheet.style.width = "100%";
-      sheet.style.minHeight = "100vh";
-      sheet.style.padding = `${margin}px`;
-      sheet.style.gap = `${gap}px`;
-      sheet.style.gridTemplateColumns = `repeat(${cols}, 1fr)`;
-      sheet.style.gridTemplateRows = `repeat(${rows}, 1fr)`;
+      sheet.style.height = "100vh";
+      sheet.style.maxHeight = "100vh";
+      sheet.style.padding = printMargin + "px";
+      sheet.style.gap = printGap + "px";
+      sheet.style.gridTemplateColumns = `repeat(${cols}, minmax(0, 1fr))`;
+      sheet.style.gridTemplateRows = `repeat(${rows}, minmax(0, 1fr))`;
       sheet.style.boxSizing = "border-box";
+      sheet.style.overflow = "hidden";
     } else {
       sheet.style.width = `${previewWidth}px`;
       sheet.style.height = `${Math.round(previewWidth * aspect)}px`;
