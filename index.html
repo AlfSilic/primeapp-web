@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>PrimeApp Web – Impresión de capturas</title>
+  <title>PrimeApp Web 鈥� Impresi贸n de capturas</title>
   <link rel="stylesheet" href="styles.css" />
   <script>
     (function () {
@@ -20,20 +20,20 @@
     <header class="header">
       <div>
         <h1>PrimeApp Web</h1>
-        <p class="subtitle">Sube capturas, organízalas e imprime o descarga el PDF</p>
+        <p class="subtitle">Sube capturas, organ铆zalas e imprime o descarga el PDF</p>
       </div>
       <div class="header-actions">
         <button type="button" class="btn-theme" id="btnTheme" title="Cambiar tema claro/oscuro" aria-label="Cambiar tema">
-          <span id="themeIcon">🌙</span>
+          <span id="themeIcon">馃寵</span>
         </button>
-        <span id="imgCount" class="badge">0 imágenes</span>
-        <span id="pageCount" class="badge">0 páginas</span>
+        <span id="imgCount" class="badge">0 im谩genes</span>
+        <span id="pageCount" class="badge">0 p谩ginas</span>
       </div>
     </header>
 
     <section class="controls card">
       <div class="control">
-        <label for="paperSize">Tamaño de hoja</label>
+        <label for="paperSize">Tama帽o de hoja</label>
         <select id="paperSize">
           <option value="letter">Carta (Letter)</option>
           <option value="legal">Oficio (Legal)</option>
@@ -41,7 +41,7 @@
         </select>
       </div>
       <div class="control">
-        <label for="perPage">Imágenes por hoja</label>
+        <label for="perPage">Im谩genes por hoja</label>
         <select id="perPage">
           <option value="1">1</option>
           <option value="2">2</option>
@@ -50,9 +50,9 @@
         </select>
       </div>
       <div class="control">
-        <label for="margins">Márgenes</label>
+        <label for="margins">M谩rgenes</label>
         <select id="margins">
-          <option value="12">Pequeños</option>
+          <option value="12">Peque帽os</option>
           <option value="20" selected>Normales</option>
           <option value="32">Amplios</option>
         </select>
@@ -68,10 +68,10 @@
     <section class="dropzone card" id="dropzone">
       <input type="file" id="fileInput" accept="image/*" multiple hidden />
       <div class="dropzone-inner">
-        <p class="drop-title">Arrastra imágenes aquí</p>
+        <p class="drop-title">Arrastra im谩genes aqu铆</p>
         <p class="drop-hint">o</p>
         <button type="button" class="btn btn-primary" id="btnBrowse">Seleccionar archivos</button>
-        <p class="drop-formats">JPG, PNG, WebP…</p>
+        <p class="drop-formats">JPG, PNG, WebP鈥�</p>
       </div>
     </section>
 
@@ -79,11 +79,12 @@
       <button type="button" class="btn" id="btnClear">Limpiar todo</button>
       <button type="button" class="btn btn-secondary" id="btnPreview">Vista previa</button>
       <button type="button" class="btn btn-primary" id="btnPrint">Imprimir</button>
+      <p id="printTip" class="print-tip">Al imprimir: desactiva <strong>Encabezados y pies de p谩gina</strong> y m谩rgenes <strong>Ninguno</strong>.</p>
       <button type="button" class="btn btn-accent" id="btnPdf">Descargar PDF</button>
     </section>
 
     <section class="thumbs card" id="thumbsSection" hidden>
-      <h2>Imágenes <small>(arrastra para reordenar)</small></h2>
+      <h2>Im谩genes <small>(arrastra para reordenar)</small></h2>
       <div class="thumbs-grid" id="thumbs"></div>
     </section>
 
@@ -91,16 +92,16 @@
       <div class="preview-header">
         <h2>Vista previa</h2>
         <div class="preview-nav">
-          <button type="button" class="btn btn-sm" id="btnPrevPage">← Anterior</button>
-          <span id="previewPageLabel">Página 1</span>
-          <button type="button" class="btn btn-sm" id="btnNextPage">Siguiente →</button>
+          <button type="button" class="btn btn-sm" id="btnPrevPage">鈫� Anterior</button>
+          <span id="previewPageLabel">P谩gina 1</span>
+          <button type="button" class="btn btn-sm" id="btnNextPage">Siguiente 鈫�</button>
         </div>
       </div>
       <div class="preview-frame" id="previewFrame"></div>
     </section>
   </div>
 
-  <!-- Área solo para impresión (oculta en pantalla) -->
+  <!-- 脕rea solo para impresi贸n (oculta en pantalla) -->
   <div id="printRoot" class="print-root" aria-hidden="true"></div>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
