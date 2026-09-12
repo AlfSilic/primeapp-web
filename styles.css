@@ -1,0 +1,581 @@
+/* ========== TEMAS ========== */
+:root,
+[data-theme="light"] {
+  color-scheme: light;
+  --bg: #eef1f8;
+  --bg2: #e4e9f5;
+  --card: #ffffff;
+  --card-border: rgba(26, 31, 54, 0.06);
+  --text: #1a1f36;
+  --muted: #6b7280;
+  --primary: #7ba3f0;
+  --primary-dark: #5b8ad9;
+  --primary-soft: #e8f0fe;
+  --accent: #00c9a7;
+  --danger: #e53935;
+  --border: #e5e7eb;
+  --input-bg: #f9fafb;
+  --input-border: #e5e7eb;
+  --drop-bg: #f8faff;
+  --drop-border: #c7d2fe;
+  --drop-active: #eef4ff;
+  --preview-bg: #e5e7eb;
+  --thumb-bg: #f3f4f6;
+  --thumb-img-bg: #ffffff;
+  --btn-bg: #e8ecf4;
+  --btn-text: #1a1f36;
+  --btn-secondary-bg: #e0e7ff;
+  --btn-secondary-text: #3730a3;
+  --badge-bg: #ffffff;
+  --remove-bg: #ffffff;
+  --sheet-bg: #ffffff;
+  --sheet-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
+  --radius: 16px;
+  --shadow: 0 8px 24px rgba(26, 31, 54, 0.08);
+  --font: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --transition: background-color 0.25s ease, color 0.25s ease,
+    border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+[data-theme="dark"] {
+  color-scheme: dark;
+  --bg: #0f111a;
+  --bg2: #161a28;
+  --card: #1c2133;
+  --card-border: rgba(255, 255, 255, 0.06);
+  --text: #f0f2f8;
+  --muted: #9aa3b8;
+  --primary: #8bb0f5;
+  --primary-dark: #7ba3f0;
+  --primary-soft: #243049;
+  --accent: #2dd4bf;
+  --danger: #f87171;
+  --border: #2f3548;
+  --input-bg: #151926;
+  --input-border: #2f3548;
+  --drop-bg: #181d2e;
+  --drop-border: #3d4a6b;
+  --drop-active: #243049;
+  --preview-bg: #12161f;
+  --thumb-bg: #252b3d;
+  --thumb-img-bg: #1a1f2e;
+  --btn-bg: #2a3145;
+  --btn-text: #f0f2f8;
+  --btn-secondary-bg: #2c3350;
+  --btn-secondary-text: #c7d2fe;
+  --badge-bg: #252b3d;
+  --remove-bg: #2a3145;
+  --sheet-bg: #ffffff;
+  --sheet-shadow: 0 4px 24px rgba(0, 0, 0, 0.45);
+  --shadow: 0 8px 28px rgba(0, 0, 0, 0.4);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  background: var(--bg);
+}
+
+body {
+  margin: 0;
+  font-family: var(--font);
+  background: linear-gradient(160deg, var(--bg), var(--bg2));
+  background-attachment: fixed;
+  color: var(--text);
+  min-height: 100vh;
+  transition: var(--transition);
+}
+
+.app {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 24px 16px 48px;
+}
+
+/* ========== HEADER ========== */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.header h1 {
+  margin: 0;
+  font-size: 1.75rem;
+  color: var(--text);
+  transition: color 0.25s ease;
+}
+
+.subtitle {
+  margin: 4px 0 0;
+  color: var(--muted);
+  font-size: 0.95rem;
+  transition: color 0.25s ease;
+}
+
+.header-actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.badge {
+  background: var(--badge-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 999px;
+  padding: 6px 12px;
+  font-size: 0.85rem;
+  color: var(--muted);
+  box-shadow: var(--shadow);
+  transition: var(--transition);
+}
+
+/* Botón tema */
+.btn-theme {
+  width: 42px;
+  height: 42px;
+  border: 1px solid var(--card-border);
+  border-radius: 50%;
+  background: var(--card);
+  box-shadow: var(--shadow);
+  cursor: pointer;
+  font-size: 1.2rem;
+  display: grid;
+  place-items: center;
+  color: var(--text);
+  transition: transform 0.15s ease, background 0.25s ease, border-color 0.25s ease;
+}
+
+.btn-theme:hover {
+  transform: scale(1.08);
+  border-color: var(--primary);
+}
+
+.btn-theme:active {
+  transform: scale(0.96);
+}
+
+/* ========== CARDS ========== */
+.card {
+  background: var(--card);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 16px;
+  margin-bottom: 16px;
+  transition: var(--transition);
+}
+
+/* ========== CONTROLES ========== */
+.controls {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 12px;
+  align-items: end;
+}
+
+.control label {
+  display: block;
+  font-size: 0.8rem;
+  color: var(--muted);
+  margin-bottom: 6px;
+  transition: color 0.25s ease;
+}
+
+.control select {
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid var(--input-border);
+  background: var(--input-bg);
+  color: var(--text);
+  font-size: 0.95rem;
+  transition: var(--transition);
+}
+
+.control select:focus {
+  outline: 2px solid var(--primary);
+  outline-offset: 1px;
+}
+
+.control select option {
+  background: var(--card);
+  color: var(--text);
+}
+
+.control-check label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.9rem;
+  color: var(--text);
+  margin: 0;
+  padding-bottom: 10px;
+}
+
+.control-check input[type="checkbox"] {
+  accent-color: var(--primary);
+  width: 16px;
+  height: 16px;
+}
+
+/* ========== DROPZONE ========== */
+.dropzone {
+  border: 2px dashed var(--drop-border);
+  background: var(--drop-bg);
+  cursor: pointer;
+  transition: border-color 0.2s ease, background 0.2s ease;
+}
+
+.dropzone.dragover {
+  border-color: var(--primary);
+  background: var(--drop-active);
+}
+
+.dropzone-inner {
+  text-align: center;
+  padding: 14px 12px;
+}
+
+.drop-title {
+  margin: 0;
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--text);
+}
+
+.drop-hint {
+  margin: 8px 0;
+  color: var(--muted);
+}
+
+.drop-formats {
+  margin: 6px 0 0;
+  font-size: 0.75rem;
+  color: var(--muted);
+}
+
+/* ========== BOTONES ========== */
+.toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 16px;
+  align-items: center;
+}
+
+.btn {
+  border: none;
+  border-radius: 12px;
+  padding: 10px 16px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  background: var(--btn-bg);
+  color: var(--btn-text);
+  transition: transform 0.1s ease, opacity 0.15s ease, background 0.25s ease;
+}
+
+.btn:hover {
+  opacity: 0.92;
+}
+
+.btn:active {
+  transform: scale(0.98);
+}
+
+.btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.btn-primary {
+  background: var(--primary);
+  color: #fff;
+}
+
+.btn-primary:hover {
+  background: var(--primary-dark);
+  opacity: 1;
+}
+
+.btn-secondary {
+  background: var(--btn-secondary-bg);
+  color: var(--btn-secondary-text);
+}
+
+.btn-accent {
+  background: var(--accent);
+  color: #fff;
+}
+
+.btn-sm {
+  padding: 6px 12px;
+  font-size: 0.85rem;
+}
+
+.print-tip {
+  width: 100%;
+  margin: 0;
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+
+/* ========== MINIATURAS ========== */
+.thumbs h2,
+.preview-section h2 {
+  margin: 0 0 12px;
+  font-size: 1.05rem;
+  color: var(--text);
+}
+
+.thumbs h2 small {
+  font-weight: 400;
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+.thumbs-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 12px;
+}
+
+.thumb {
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  background: var(--thumb-bg);
+  border: 1px solid var(--card-border);
+  aspect-ratio: 3 / 4;
+  box-shadow: var(--shadow);
+  cursor: grab;
+  transition: var(--transition);
+}
+
+.thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  background: var(--thumb-img-bg);
+}
+
+.thumb .idx {
+  position: absolute;
+  left: 6px;
+  bottom: 6px;
+  background: var(--primary);
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: 700;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+}
+
+.thumb .remove {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  width: 26px;
+  height: 26px;
+  border: none;
+  border-radius: 50%;
+  background: var(--remove-bg);
+  color: var(--danger);
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.thumb.dragging {
+  opacity: 0.5;
+}
+
+/* ========== VISTA PREVIA ========== */
+.preview-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 12px;
+}
+
+.preview-header h2 {
+  margin: 0;
+}
+
+.preview-nav {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--text);
+}
+
+.preview-frame {
+  display: flex;
+  justify-content: center;
+  background: var(--preview-bg);
+  border-radius: 12px;
+  padding: 16px;
+  overflow: auto;
+  transition: background 0.25s ease;
+}
+
+/* La hoja siempre blanca (simula papel real) */
+.sheet-preview {
+  background: var(--sheet-bg);
+  box-shadow: var(--sheet-shadow);
+  display: grid;
+  gap: 8px;
+  padding: 16px;
+}
+
+.sheet-preview .cell {
+  border: 1px solid #e5e7eb;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: #fff;
+}
+
+.sheet-preview .cell img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+/* ========== IMPRESIÓN ========== */
+.print-root {
+  display: none;
+}
+
+@media print {
+  html,
+  body {
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 100%;
+    height: 100%;
+    background: #fff !important;
+  }
+
+  body * {
+    visibility: hidden;
+  }
+
+  .print-root,
+  .print-root * {
+    visibility: visible;
+  }
+
+  .print-root {
+    display: block !important;
+    position: static !important;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
+  .app {
+    display: none !important;
+  }
+
+  .print-page {
+    width: 100%;
+    height: 98vh;
+    max-height: 98vh;
+    box-sizing: border-box;
+    display: grid;
+    background: #fff;
+    overflow: hidden;
+    page-break-after: always;
+    break-after: page;
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+
+  .print-page:last-child {
+    page-break-after: auto;
+    break-after: auto;
+  }
+
+  .print-page .cell {
+    min-width: 0;
+    min-height: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    box-sizing: border-box;
+  }
+
+  .print-page .cell img {
+    display: block;
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+  }
+}
+
+@page {
+  margin: 0;
+  size: auto;
+}
+
+
+/* Boton rotar en miniatura */
+.rotate-btn {
+  position: absolute;
+  top: 6px;
+  left: 6px;
+  width: 26px;
+  height: 26px;
+  border: none;
+  border-radius: 50%;
+  background: var(--remove-bg);
+  color: var(--text);
+  font-weight: 700;
+  font-size: 0.95rem;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  line-height: 1;
+  z-index: 2;
+}
+
+.rotate-btn:hover {
+  background: var(--primary);
+  color: #fff;
+}
+
+.thumb img {
+  transition: transform 0.2s ease;
+}
+
+/* Ajuste cuando rota 90/270 en miniatura */
+.thumb img.rotated-odd {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.sheet-preview .cell img,
+.print-page .cell img {
+  transition: transform 0.15s ease;
+}
+
+.sheet-preview .cell img.rotated-odd,
+.print-page .cell img.rotated-odd {
+  max-width: 85%;
+  max-height: 85%;
+}
